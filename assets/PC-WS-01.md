@@ -1,29 +1,26 @@
 ---
-id: VIS-PC-WS-01
+id: PC-WS-01
 asset_group: rc545a-vis
 category: computer
 subtype: workstation
 manufacturer: unknown
 model: unknown
-device_name: "RC545a VIS workstation PC"
+device_name: RC545a VIS workstation PC
 serial: unknown
 status: needs_info
-location: "On PC desk in RC545a"
+location: On PC desk in RC545a
 kit:
-power: "Standard ATX power supply (exact rating TBC)"
+power: Standard ATX power supply (exact rating TBC)
 connectivity: "Ports TBC: record HDMI, DisplayPort, USB, network"
 accessories:
-  - "Keyboard"
-  - "Mouse"
+  - Keyboard
+  - Mouse
 last_checked:
-notes: >
-  Create a follow up once you have photos of the front and rear of the case
-  and any university asset tag. Record GPU model and available video outputs
-  for VR planning.
-
+notes: |
+  Create a follow up once you have photos of the front and rear of the case and any university asset tag. Record GPU model and available video outputs for VR planning.
 last_user:
 last_used:
-has_fault: false           # true if any active fault reports
-fault_severity: none       # none | low | medium | high | critical
-fault_links: []            # list of [[fault-notes]]
+has_fault: false
+fault_severity: none
+fault_links: []
 ---

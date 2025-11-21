@@ -1,32 +1,30 @@
 ---
-id: VIS-INP-MAKEY-01
+id: INP-MAKEY-01
 asset_group: rc545a-vis
 category: input_device
 subtype: tangible_interface
 manufacturer: JoyLabz
-model: "Makey Makey"
-device_name: "Makey Makey kit"
+model: Makey Makey
+device_name: Makey Makey kit
 serial: unknown
 status: available
-location: "Cupboard Shelf C"
+location: Cupboard Shelf C
 kit: D
-power: "USB from host computer"
-connectivity: "USB"
+power: USB from host computer
+connectivity: USB
 accessories:
-  - "Makey Makey board"
-  - "7 alligator clips"
-  - "1 USB cable"
-  - "6 connector wires"
-  - "Instruction guide"
-  - "Sticker"
+  - Makey Makey board
+  - 7 alligator clips
+  - 1 USB cable
+  - 6 connector wires
+  - Instruction guide
+  - Sticker
 last_checked:
-notes: >
-  Packaging shows manufacture date 05 2022.
-  Used for playful tangible interaction prototypes and workshops.
-
+notes: |
+  Packaging shows manufacture date 05 2022. Used for playful tangible interaction prototypes and workshops.
 last_user:
 last_used:
-has_fault: false           # true if any active fault reports
-fault_severity: none       # none | low | medium | high | critical
-fault_links: []            # list of [[fault-notes]]
+has_fault: false
+fault_severity: none
+fault_links: []
 ---

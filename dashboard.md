@@ -1,11 +1,24 @@
-# RC545a VIS — Dashboard
+# RC545a VIS Dashboard
 
 ## Overview
 Interactive dashboard for all VIS assets, storage locations, and operational status.
 
 ---
+## Kits
+```dataview
+TABLE
+  name AS "Kit",
+  kit_id AS "ID",
+  category AS "Category",
+  status AS "Status",
+  assets AS "Assets",
+  booking_system AS "Booking system"
+FROM "kits"
+WHERE type = "vis_kit"
+SORT name ASC
+```
+---
 ## Headsets (VR / MR / AR)
-
 ```dataview
 TABLE 
   device_name AS "Device",
@@ -14,11 +27,10 @@ TABLE
   status AS "Status",
   location AS "Location",
   kit AS "Kit"
-FROM "13-projects/VIS/assets"
+FROM "assets"
 WHERE category = "headset" OR category = "ar_glasses" OR category = "ar_controller"
 SORT device_name ASC
 ```
-
 ---
 ## Tracking Devices
 ```dataview
@@ -29,11 +41,10 @@ TABLE
   status AS "Status",
   location AS "Location",
   kit AS "Kit"
-FROM "13-projects/VIS/assets"
+FROM "assets"
 WHERE category = "tracker" OR category = "sensor"
 SORT device_name ASC
 ```
-
 ---
 ## Interaction Devices
 ```dataview
@@ -43,14 +54,12 @@ TABLE
   status AS "Status",
   location AS "Location",
   kit AS "Kit"
-FROM "13-projects/VIS/assets"
+FROM "assets"
 WHERE category = "input_device"
 SORT device_name ASC
 ```
-
 ---
 ## Networking / Infrastructure
-
 ```dataview
 TABLE 
   device_name AS "Device",
@@ -58,7 +67,7 @@ TABLE
   serial AS "Serial",
   status AS "Status",
   location AS "Location"
-FROM "13-projects/VIS/assets"
+FROM "assets"
 WHERE category = "networking" OR category = "computer" OR category = "display"
 SORT device_name ASC
 ```
@@ -70,7 +79,7 @@ TABLE
   subtype AS "Type",
   location AS "Location",
   status AS "Status"
-FROM "13-projects/VIS/assets"
+FROM "assets"
 WHERE category = "furniture"
 SORT device_name ASC
 ```
@@ -82,7 +91,7 @@ TABLE
   model AS "Model",
   serial AS "Serial",
   notes AS "Notes"
-FROM "13-projects/VIS/assets"
+FROM "assets"
 WHERE status = "needs_info"
 SORT device_name ASC
 ```
@@ -92,7 +101,7 @@ SORT device_name ASC
 TABLE 
   device_name AS "Asset",
   file.mtime AS "Last Modified"
-FROM "13-projects/VIS/assets"
+FROM "assets"
 SORT file.mtime DESC
 LIMIT 10
 ```

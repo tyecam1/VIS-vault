@@ -10,6 +10,9 @@
   - Q2-01: Model KW49CM, S/N: 1MVRV4B27P2146
   - Q2-02: Model KW49CM, S/N: 1MVRV4B10B2146
 
+- **Valve Index**
+  - Model: Index (PC VR), S/N: TBC, Kit: Vive mocap kit (KIT-VIVE-MOCAP-01), Location: Cupboard Shelf A
+
 - **XREAL Air 2 Ultra**
   - Model X1002
   - S/N: F4X64B214861GM

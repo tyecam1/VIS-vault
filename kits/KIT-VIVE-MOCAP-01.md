@@ -7,6 +7,7 @@ purpose: Markerless or hybrid motion capture using Vive trackers, suitable for e
 category: mocap
 status: available
 assets:
+  - "[[HMD-VALVE-INDEX-01]]"
   - "[[TRK-VIVE-01]]"
   - "[[TRK-VIVE-02]]"
 recommended_room_setup:

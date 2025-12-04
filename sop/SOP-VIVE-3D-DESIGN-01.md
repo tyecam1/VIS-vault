@@ -1,3 +1,19 @@
+---
+sop_id: SOP-VIVE-3D-DESIGN-01
+asset_group: rc545a-vis
+type: vis_sop
+name: Vive 3D design visualisation pipeline
+relates_to_kit: ""
+purpose: |
+  Define a repeatable pipeline to take SolidWorks assemblies into Unity for mixed reality visualisation on Vive headsets.
+intended_users:
+  - Designers conducting CAD design reviews
+  - Researchers visualising robot cells and workstations
+  - Staff preparing MR demonstrations in RC545a VIS
+status: draft
+last_tested:
+owner: ""
+---
 ## 1. Purpose
 
 Define a repeatable pipeline to take SolidWorks assemblies into Unity for mixed reality visualisation on Vive headsets.

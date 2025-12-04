@@ -6,7 +6,7 @@ subtype: workstation
 manufacturer: unknown
 model: unknown
 device_name: RC545a VIS workstation PC
-serial: unknown
+serial: DMEM-308-Z1-VR
 status: needs_info
 location: On PC desk in RC545a
 kit:

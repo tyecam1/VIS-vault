@@ -13,3 +13,9 @@ I also created asset notes, and outlined the project file structure and content.
 Progress is being inhibited due to software installations (Jim out of office).
 Will catch up on hours the following week, when software installations are available.
 
+04/12
+Installed various softwares:
+- meta link
+- obsidian
+- git
+- 

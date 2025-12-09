@@ -5,7 +5,7 @@ type: vis_kit
 name: Quest remote collaboration kit
 purpose: Remote MR or VR collaboration sessions, teaching, and design reviews using Meta Quest headsets.
 category: collab_vr
-status: available
+status: pipeline-1
 assets:
   - "[[HMD-META-KW49-01]]"
   - "[[HMD-META-KW49-02]]"

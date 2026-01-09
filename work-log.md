@@ -102,11 +102,13 @@
     - Documented handling of Vive “centre of play” changes and realignment approach without altering Unity’s fixed MR origin.
         
     - Organised the secure VR locker and replaced the storage note with a clear access/return policy (key-holder contact, kit separation, return-as-found requirement).
-        
-- **Next actions:**
+
+### 2025-12-09
+
+- **Hours:** 8
     
-    - Capture final screenshots/footage of the Vive demo for progress-meeting slides.
-        
-    - Integrate updated SOP text into the repository as the canonical version.
-        
-    - Print and mount the VR locker access/return policy.
+- **Delivered:**
+    
+- Complete reset on a more powerful PC for more intensive future work. Reinstalled and reconfigured all existing software.
+
+- Installed Valve Index brackets into RC545

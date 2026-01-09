@@ -5,7 +5,7 @@ type: vis_kit
 name: XREAL AR prototyping kit
 purpose: AR prototyping and interface exploration with XREAL Air 2 Ultra and Beam Pro.
 category: ar_prototyping
-status: available
+status: pipeline-4
 assets:
   - "[[AR-XREAL-AIR2-01]]"
   - "[[AR-XREAL-BEAM-01]]"

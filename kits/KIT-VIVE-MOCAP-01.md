@@ -5,8 +5,9 @@ type: vis_kit
 name: Vive tracker mocap kit
 purpose: Markerless or hybrid motion capture using Vive trackers, suitable for ergonomic analysis and interaction prototyping.
 category: mocap
-status: available
+status: pipeline-2
 assets:
+  - "[[HMD-VALVE-INDEX-01]]"
   - "[[TRK-VIVE-01]]"
   - "[[TRK-VIVE-02]]"
 recommended_room_setup:

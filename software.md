@@ -1,4 +1,5 @@
 Installed:
+<<<<<<< HEAD
 - SteamVR
 - ViveHub
 - Unity
@@ -9,6 +10,18 @@ Ideal:
 - SOLIDWORKS
 - Oculus
 - Blender
+=======
+- SOLIDWORKS
+- FreeCAD
+- Blender
+- Unity
+- Unreal
+- SteamVR
+- Vive Hub
+- Meta quest link
+
+Pending/ potential:
+>>>>>>> origin/main
 - Rhino/ Grasshopper + leap motion plugins
 - Teams
 - Microsoft Mesh add-in for Quest
@@ -17,7 +30,10 @@ Ideal:
 - Zoom VR
 - FigJam VR or Spatial
 - ViRe Unity Plugin
+<<<<<<< HEAD
 - SteamVR Tracker Calibration Tool
+=======
+>>>>>>> origin/main
 - OpenVR Input Emulator
 - Intel Realsense Viewer
 - Meshroom
@@ -26,6 +42,7 @@ Ideal:
 - Vuforia Engine/ Unity AR Foundation (markers)
 - XREAL Nebula
 
+<<<<<<< HEAD
 Minimal list:
 - Unity,
 - SteamVR,
@@ -38,3 +55,5 @@ Minimal list:
 - Einscan
 - VR Mocap/ ViRe plugin
 - eDrawings
+=======
+>>>>>>> origin/main

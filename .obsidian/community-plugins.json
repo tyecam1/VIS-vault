@@ -1,5 +1,9 @@
 [
   "obsidian-git",
   "dataview",
+<<<<<<< HEAD
   "obsidian-day-planner"
+=======
+  "omnisearch"
+>>>>>>> origin/main
 ]

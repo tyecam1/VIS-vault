@@ -60,10 +60,3 @@
 - Workstation PC (details pending)
 
 ---
-
-## Notes / To Add
-- Tracker serials
-- Realsense cameras (if found)
-- Einscan scanner
-- EMG headset
-- Eye tracking glasses

@@ -58,5 +58,6 @@
 - Foldable table
 - PC desk
 - Workstation PC (details pending)
+- Valve Index Base Sensors x2
 
 ---

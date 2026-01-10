@@ -118,7 +118,7 @@
         
     - Installed Valve Index brackets into RC545 (room 2).
         
-    
+    - Began configuration for a comprehensive Unreal SOP for human machine interaction.
 
 ---
 

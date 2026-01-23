@@ -106,7 +106,7 @@
     - Organised secure VR locker and replaced storage note with a clear access/return.
     
 
-## 2026-01-09 (Work block B)
+## 2026-01-09
 
 - **Hours:** 8
     
@@ -118,12 +118,82 @@
         
     - Installed Valve Index brackets into RC545 (room 2).
         
-    - Began configuration for a comprehensive Unreal SOP for human machine interaction.
+    - Began configuration for a Unreal SOP for human machine interaction.
+
+## 2026-01-14
+
+- **Hours:** 9
+    
+- **Activity:** Unreal Engine 5.4 MR integration on HTC Vive Focus Vision, including passthrough validation, cross-project asset transfer, material reconstruction, lighting stabilisation, and a first-pass “extreme weather over mesh only” Niagara prototype.
+    
+- **Delivered:**
+    
+    - **Passthrough in Unreal (UE 5.4, Focus Vision):**
+        
+        - Established that passthrough was not available via the existing farm project configuration alone.
+            
+        - Located and ran the HTC passthrough sample content (the “passthrough sample map” was not present in the initial project; passthrough validated using the dedicated sample project/map).
+            
+        - Confirmed passthrough functioning in-editor and in-headset for Focus Vision under UE 5.4.
+            
+        - Assessed platform constraints and alternatives (Focus Vision vs Quest 2 vs Valve Index).
+            
+    - **Environment asset integration (farm model) into the passthrough sample map:**
+        
+        - Attempted Unreal “Migrate” from the farm project; migration produced folder structure but failed to bring the mesh correctly.
+            
+        - Established that passthrough is only enabled in UE5.4, **engine version incompatibility** (farm authored in UE 5.5, now in UE 5.4 for passthrough) due to plugin support.
+            
+        - Implemented a fallback transfer route by exporting the **static mesh and textures** from the source project and re-importing into the UE 5.4 passthrough project (no raw FBX available).
+            
+    - **Material and texture reconstruction in UE 5.4:**
+        
+        - Rebuilt materials from the available texture set (single texture source provided), applied to the imported mesh, and corrected rendering issues via material parameter adjustment.
+            
+        - Diagnosed and corrected “washed out / overly light” appearance as a lighting build state issue rather than purely material scaling.
+            
+- **Outcomes:** A working UE 5.4 passthrough baseline on Focus Vision with a transferred, re-imported environment mesh inside the passthrough sample map, lighting stabilised for large scale assets, and an initial pattern for bounds-constrained Niagara weather over the mesh only.
+    
+- **Blockers:**
+    
+    - **UE 5.5 → UE 5.4 incompatibility** prevented direct migration and constrained reuse of the original project content.
+        
+    - Lack of raw **FBX** and a complete PBR texture set limited material reconstruction and increased manual setup overhead.
+        
+    - Large world scale required explicit **Lightmass Importance Volume** management to avoid poor synthesis and long builds.
+
+## 2026-01-23
+
+- **Hours:** 8
+    
+- **Activity:** Unreal Engine 5.4 (Vive OpenXR) passthrough and interaction workflow integration for VIS; simplified sample Blueprints into a usable baseline.
+    
+- **Delivered:**
+    
+    - **Passthrough (UE 5.4)**
+        
+        - Confirmed passthrough works in the Vive sample maps but can fail after copying into VIS due to project defaults (GameMode/Pawn/Input) not matching the sample project.
+            
+        - Adapted the passthrough Blueprint so planar passthrough is always-on, and removed projected passthrough logic and its tick-based meshing.
+            
+    - **Object manipulation
+        
+        - Made a generic function that outputs transform any chosen mesh/component via the joysticks.
+            
+        - Debugged why a manipulated mesh may not appear: wrong actor, mesh not assigned, hidden-in-game, or tick pushing it out of view.
+            
+    - **Build/runtime issue**
+        
+        - Fixed StaticMesh→ProceduralMesh conversion warning by enabling **Allow CPU Access** on meshes that need `GetSectionFromStaticMesh` in packaged builds.
+            
+    - **Rendering issue**
+        
+        - Fixed shadow only in one eye as a VR stereo/render-path issue and identified settings to disable first.
 
 ---
 
 ## Totals
 
-- **Total time logged:** **44 / 70 hours**
+- **Total time logged:** **59 / 70 hours**
     
-- **Remaining allocation:** **26 hours**
+- **Remaining allocation:** **11 hours**

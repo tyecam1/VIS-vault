@@ -13,7 +13,7 @@ last_tested: TBD
 owner: tye.cameron-robson@strath.ac.uk
 ---
 
-# **SOP-REALITYSCAN-UNREAL-01**
+# **SOP-PHYSICAL-TO-UNREAL-00**
 
 Physical Item to Unreal Engine Asset (RealityScan)  
 RC545a Visualisation & Interaction Suite (VIS)

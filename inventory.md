@@ -1,4 +1,4 @@
-# RC545a VIS Inventory (v1)
+# RC545a VIS Inventory
 
 ## Headsets (VR/MR/AR)
 - **Vive Focus Vision**

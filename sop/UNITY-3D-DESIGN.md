@@ -13,7 +13,7 @@ status: draft
 last_tested: 25-12-4
 owner: tye.cameron-robson@strath.ac.uk
 ---
-# **SOP-UNITY-3D-DESIGN-00**
+# **Unity 3D Design Visualisation Pipeline**
 
 SolidWorks to Unity Mixed-Reality Visualisation (Vive Focus Vision)  
 RC545a Visualisation & Interaction Suite (VIS)

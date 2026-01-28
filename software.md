@@ -3,7 +3,7 @@ Installed:
 - ViveHub
 - Unity
 - Blender
-- SOLIDWORKS
+- SOLIDWORKS (No longer since changed PC)
 - Oculus/ Meta quest link
 - FreeCAD
 - Unreal

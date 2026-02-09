@@ -8,14 +8,26 @@ intended_users:
   - Designers conducting CAD design reviews
   - Researchers visualising robot cells and workstations
   - Staff preparing MR demonstrations in RC545a VIS
-status: draft
-last_tested: 25-12-4
+status: done
+last_tested: 26-02-09
 owner: tye.cameron-robson@strath.ac.uk
 ---
-# **Unity 3D Design Visualisation Pipeline**
+# **Unity 3D Design Pipeline**
 
-SolidWorks to Unity Mixed-Reality Visualisation (Vive Focus Vision)  
+SolidWorks to Unity Mixed-Reality Visualisation for the Vive Focus Vision
 RC545a Visualisation & Interaction Suite (VIS)
+
+---
+
+This is the default pipeline for the VIS. It is for when you need:
+
+- Reliable, repeatable setup that most users can run without support.
+	
+- Design review and iteration (bring in CAD, check scale/layout, make quick interaction tweaks).
+    
+- Faster (same-day demo, quick prototype, student teaching, frequent changes).
+    
+- Lower engine-specific complexity.
 
 ---
 
@@ -23,55 +35,53 @@ RC545a Visualisation & Interaction Suite (VIS)
 
 Prior to launching Unity-based mixed-reality (MR) scenes, the Vive Focus Vision headset must be wirelessly connected to the VIS workstation PC.
 
-### **0.1 Network configuration**
+### **0.1 Network**
 
-Both the headset and the workstation must be connected to the same low-latency wireless network:
+Both the headset and the workstation must be connected to the same network:
 
-- **VIS workstation PC:** `RC545-IoT-5GHz`
+- VIS workstation PC: `RC545-IoT-5GHz`
     
-- **Vive Focus Vision headset:** `RC545-IoT-5GHz` (via _Settings → Network_)
+- Vive Focus Vision headset: `RC545-IoT-5GHz` (via _Settings → Network_)
     
-- **Password:** RC545IoT!! 
+- Password: RC545IoT!! 
 
-Use of the 5 GHz IoT network is required to ensure sufficient bandwidth and stability for MR streaming and passthrough operation.
+The 5 GHz IoT network is required to ensure sufficient bandwidth and stability for VR streaming and passthrough.
 
 ---
 
-### **0.2 Establish headset-to-PC connection**
+### **0.2 Headset to PC connection**
 
 1. Put on the Vive Focus Vision headset.
     
-2. From the headset home interface, launch **Vive Streaming**
+2. From home, launch Vive Streaming
     
-3. Select the **VIS workstation PC** from the list of detected devices on the network.
+3. Select the VIS workstation PC from the list of detected devices on the network.
     
 4. Confirm the pairing request on both the headset and the PC if prompted.
     
 
-Upon successful connection, the PC will expose the headset to SteamVR/OpenXR as a wireless MR device.
+Upon connection, the PC will expose the headset to SteamVR/OpenXR as a wireless MR device.
 
 ---
 
-### **0.3 Connection verification**
+### **0.3 Verification**
 
-Before proceeding:
+Before proceeding confirm:
 
-- Confirm headset tracking is active and stable.
+- Headset tracking is active and stable.
     
-- Confirm SteamVR or the Vive Streaming status interface reports the headset as connected.
+- SteamVR or the Vive Streaming status interface reports the headset as connected.
     
-- Confirm passthrough functionality is available.
+- Passthrough is enabled in headset settings.
     
-
-Once verified, proceed to the geometry and visualisation workflow below.
 
 ---
 
 ## **1. Purpose**
 
-Define a repeatable, documented pipeline for transferring SolidWorks assemblies into Unity for mixed-reality (MR) visualisation on OpenXR-compatible headsets used within RC545a VIS (e.g. Vive Focus Vision, Vive/Index, Meta Quest).
+A repeatable pipeline for transferring SolidWorks assemblies into Unity for mixed-reality (MR) visualisation on OpenXR-compatible headsets within RC545a VIS (Vive Focus Vision, Vive/Index, Meta Quest).
 
-Primary use cases:
+Example uses:
 
 - Design review of products and mechanisms
     
@@ -82,7 +92,7 @@ Primary use cases:
 
 ---
 
-## **2. Standard VIS Geometry Pipeline**
+## **2. Standard Geometry Pipeline**
 
 Standard pipeline for mechanical assemblies:
 
@@ -90,38 +100,40 @@ Standard pipeline for mechanical assemblies:
 
 ### **Scope and constraints**
 
-- Preserve assembly hierarchy so parts and subassemblies remain addressable in Unity.
+- Using FreeCAD preserves assembly hierarchy so parts and subassemblies remain unique in Unity.
     
-- Maintain correct physical scale (1 Unity unit = 1 metre).
+- Maintain correct physical scale (1 Unity unit = 1 metre, SOLIDWORKS is often mm).
     
-- Keep triangle counts suitable for real-time rendering on standalone and tethered headsets.
+- Keep triangle counts reasonably low for real-time rendering.
     
-- Use SolidWorks appearances only as material hints; final materials are defined in Unity.
+- SolidWorks appearances are hard to migrate to Unity. Final materials are re-made in Unity.
     
 
 ### **Tools**
 
-- SolidWorks 2021 Education
+- SolidWorks Education
     
 - FreeCAD (STEP import, mesh generation, OBJ export)
     
-- Unity (URP or Built-in Render Pipeline, units set to metres)
+- Unity (URP or Built-in Render Pipeline, units in metres)
     
 
-### **Rules of thumb**
+### **Rules**
 
 - Small mechanism: target < 250k triangles
     
-- Full workstation / robot cell: target < 750k triangles
+- Full workstation / cell: target < 750k triangles
     
-- Always import mm-based CAD into Unity with **Scale Factor = 0.001**
+- Import mm-based CAD into Unity with Scale Factor = 0.001
     
 
 ---
 
-## **3. SolidWorks Stage**
+## **3. SolidWorks**
 
-### **3.1 Create a dedicated export configuration**
+### **3.1 Create an export configuration**
+
+For repetition, if needed.
 
 1. Open the assembly in SolidWorks.
     
@@ -129,7 +141,7 @@ Standard pipeline for mechanical assemblies:
     
 3. Simplify the model for MR:
     
-    - Suppress bolts, nuts, washers, screws, pins, and cosmetic fasteners unless required for context.
+    - Suppress bolts, nuts, washers, screws, pins, and cosmetic fasteners unless required for context/ interaction.
         
     - Suppress fully internal components not visible in MR.
         
@@ -137,31 +149,27 @@ Standard pipeline for mechanical assemblies:
         
     - Keep moving subsystems as separate subassemblies (e.g. base, links, gripper, guarding).
         
-    - Use clear, stable naming for parts and subassemblies.
+    - Use clear naming for parts and subassemblies.
         
-
-This configuration is the canonical VIS export source.
 
 ---
 
 ### **3.2 Set origin and orientation**
 
-The Unity VIS template defines a **fixed MR origin** aligned to the physical room. This origin should not be modified in Unity.
+The Unity VIS template defines a fixed MR origin aligned to the physical room. This origin should not be modified in Unity.
 
 The Vive “centre of play” (SteamVR room calibration) may change if the tracking space is recalibrated. When this occurs, spatial alignment is restored by adjusting offsets relative to the fixed Unity origin, not by moving the Unity origin itself.
 
 Guidance:
 
-- Maintain Unity’s default axis convention:
+- Maintain Unity’s default axis:
     
-    - **Y up**, **Z forward**, **X right**.
+    - Y up, Z forward, X right.
         
-- Place the SolidWorks global origin at a physically meaningful datum (typically the centre of the robot base or primary fixture at floor level).
+- Place the SolidWorks global origin at a physically meaningful datum. This depends on context, intended interactions, placement, etc. But typically the centre of the robot base, primary fixture at floor level, centre of mass.
     
-- If the Vive centre of play changes:
-    
-    - Apply an MR origin offset in Unity corresponding to the user’s eye height (typically `(0, user height, 0)`).
-        
+- If the Vive centre of play changes (with no scene understanding or plane recognition implemented):
+            
     - Adjust the placement of assemblies relative to the MR origin as required.
         
 
@@ -171,16 +179,16 @@ This preserves consistent spatial behaviour across scenes and recalibrations.
 
 ### **3.3 Assign appearances for materials**
 
-SolidWorks appearances are used as indicators.
+SolidWorks appearances do not carry through the conversion pipeline.
 
 - Assign appearances at part or body level so identical physical materials share one appearance.
     
-- Reuse appearances wherever possible.
+- Reuse appearances wherever possible- append new ones to the template files.
     
 - Use appearances to distinguish material classes and functional groups (metal, plastic, rubber, wood, safety/highlight).
     
 
-Final appearance is always defined in Unity using the material palette.
+Final appearances are defined in Unity using a custom material palette.
 
 ---
 
@@ -201,8 +209,6 @@ Final appearance is always defined in Unity using the material palette.
 
 `ProjectName_Assembly_unity_export.step`
 
-This STEP file is the canonical CAD export for VIS.
-
 ---
 
 ## **4. FreeCAD Stage**
@@ -211,7 +217,7 @@ This STEP file is the canonical CAD export for VIS.
 
 1. Open FreeCAD and load `ProjectName_Assembly_unity_export.step`.
     
-2. Confirm that the model tree reflects the intended assembly hierarchy.
+2. Confirm that the model tree reflects the assembly hierarchy.
     
 
 ---
@@ -243,7 +249,7 @@ Recommended starting values:
 - Angular deflection: **10°**
     
 
-Inspect meshes to ensure acceptable smoothness without excessive triangle counts.
+Inspect meshes to ensure smoothness without excessive triangle counts.
 
 ---
 
@@ -262,16 +268,16 @@ After verifying meshes:
 
 1. Select all mesh objects.
     
-2. _File → Export…_ → **Wavefront OBJ (.obj)**.
+2. File -> Export… -> Wavefront OBJ (.obj).
     
-3. Enable export of basic colour/material information if available.
+3. Enable export of basic colour/material information if available. I couldn't see it.
     
 4. Export as:
     
 
 `ProjectName_Assembly_unity.obj`
 
-The `.mtl` file, if generated, is treated as optional metadata only.
+The `.mtl` file, if generated, is only useful as optional metadata.
 
 ---
 
@@ -298,7 +304,7 @@ The `.mtl` file, if generated, is treated as optional metadata only.
 
 1. Select the OBJ asset.
     
-2. Set **Scale Factor = 0.001**.
+2. Set Scale Factor = 0.001.
     
 3. Apply and verify against known dimensions.
     
@@ -312,7 +318,7 @@ The `.mtl` file, if generated, is treated as optional metadata only.
 - Confirm that parts and subassemblies appear as separate child objects with recognisable names.
     
 
-If collapsed, revisit FreeCAD meshing and export selection.
+If collapsed, go back to FreeCAD meshing and export selection.
 
 ---
 
@@ -343,8 +349,7 @@ Procedure:
     
 - Use as few shared materials as practical to minimise draw calls.
     
-
-The Unity material palette is the **single source of truth** for visual appearance.
+- Create new materials as needed
 
 ---
 
@@ -359,12 +364,14 @@ The Unity material palette is the **single source of truth** for visual appearan
 
 ---
 
-## **6. Summary and Good Practice**
+## **6. Summary**
 
-- This SOP defines the standard VIS pipeline for geometry-accurate MR visualisation.
+- This SOP defines the VIS pipeline for Unity MR visualisation.
     
 - Geometry is triangulated; design history and constraints do not transfer.
     
 - Materials are standardised in Unity using a shared engineering palette.
     
 - Always export from a dedicated SolidWorks configuration.
+	
+- Review [[TCR-learnings]] for additional debugging, or email tye.cameron-robson@strath.ac.uk

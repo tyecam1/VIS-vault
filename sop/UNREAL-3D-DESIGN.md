@@ -12,40 +12,52 @@ status: draft
 last_tested: 25-12-4
 owner: tye.cameron-robson@strath.ac.uk
 ---
-# Unreal 3D Design Visualisation Pipeline
+# Unreal 3D Design Pipeline
 
 SolidWorks to Unreal Engine Mixed-Reality Visualisation (Vive Focus Vision, Vive OpenXR)  
 RC545a Visualisation & Interaction Suite (VIS)
 
 ---
 
-## **0. Vive Focus Vision Wireless Connection to VIS Workstation**
+This is the specialist pipeline for the VIS. Use this SOP only when you need:
+
+- Interaction blueprints. The unity template does not have controller interaction implemented.
+	
+- High-fidelity visualisation where lighting, materials, and overall realism are primary (showcases, visitor demos, commercialisable experiences).
+    
+- Advanced scene presentation needs that justify extra setup (large-scale projects, high-impact presentation).
+    
+- Time to prepare and validate ahead of the session (Unity is the faster option).
+    
+- Engine-specific complexity (specific plugins, performance and visual tuning).
+
+---
+## **0. Vive Focus Vision Wireless Connection**
 
 ### **0.1 Network configuration**
 
 Both headset and workstation must be on the same low-latency network:
 
-- **VIS workstation PC:** `RC545-IoT-5GHz`
+- VIS workstation PC: `RC545-IoT-5GHz`
     
-- **Vive Focus Vision headset:** `RC545-IoT-5GHz` (Settings → Network)
+- Vive Focus Vision headset: `RC545-IoT-5GHz` (Settings → Network)
     
 - **Password:** `RC545IoT!!`
     
-
-### **0.2 Establish headset-to-PC connection**
+### **0.2 Headset-to-PC connection**
 
 1. Put on the headset.
     
-2. Launch **Vive Streaming**.
+2. Launch Vive Streaming.
     
-3. Select the **VIS workstation** from detected devices.
+3. Select the VIS workstation from detected devices.
     
 4. Confirm pairing on headset and PC if prompted.
     
-5. Launch SteamVR from the headset
-### **0.3 Connection verification**
+5. Launch SteamVR from the headset menu
+### **0.3 Verification**
 
-Before opening Unreal:
+Before opening Unreal, check:
 
 - Tracking is stable.
     
@@ -53,14 +65,13 @@ Before opening Unreal:
     
 - SteamVR/OpenXR sees the headset.
     
-- Passthrough toggle functions in the headset environment (if applicable).
-    
+- Passthrough enabled in the headset settings.
 
 ---
 
 ## **1. Purpose**
 
-A repeatable pipeline for transferring SolidWorks assemblies into **Unreal Engine 5.4.4** for MR visualisation using the 'VIS' Unreal template and interaction blueprints (grab, move, two-hand scale).
+A pipeline for transferring SolidWorks assemblies into Unreal Engine 5.4.4 for MR visualisation using a template and interaction blueprints (grab, move, two-hand scale).
 
 Key outcomes:
 
@@ -77,31 +88,27 @@ Key outcomes:
 
 ---
 
-## **2. Standard VIS Geometry Pipeline (Unreal)**
+## **2. Geometry Pipeline**
 
-`SolidWorks → (export) → Blender → FBX → Unreal (template copy)`
+`SolidWorks → (export) → Blender → FBX → Unreal`
 
 ### **Scope and constraints**
 
-- Preserve meaningful assembly structure where feasible.
+- Retain assembly structure where feasible.
     
-- Maintain correct scale: **1 Unreal unit = 1 cm**.
+- Correct scale: 1 Unreal unit = 1 cm.
     
 - Keep triangle counts suitable for VR/MR. 
-    
-- Photogrammetry meshes often have skewed pivots; handle via pivot/root strategy.
-    
 
 ### **Tools**
 
-- SolidWorks (assembly authoring and configuration)
+- SolidWorks
     
 - Blender (import, cleanup, pivot/origin, FBX export)
     
-- Unreal Engine 5.4.4 (Vive OpenXR project template)
-    
+- Unreal Engine 5.4.4 (Vive OpenXR template)
 
-### **Rules of thumb**
+### **Rules**
 
 - Small mechanism: target < 250k triangles
     
@@ -112,7 +119,7 @@ Key outcomes:
 
 ---
 
-## **3. SolidWorks Stage**
+## **3. SolidWorks**
 
 ### **3.1 Create a dedicated export configuration**
 
@@ -126,23 +133,20 @@ Key outcomes:
         
     - Keep moving subsystems as separate subassemblies if interaction is required.
         
-2. Ensure stable naming of major parts/subassemblies.
-    
 
 ### **3.2 Origin and orientation**
 
-Unreal uses **Z up** by default. You will handle axis conversion in Blender.
+Unreal uses Z up by default. You can handle axis conversion in Blender.
 
 Guidance:
 
-- Place SolidWorks origin at a meaningful datum (robot base centre at floor level is typical).
+- Place SolidWorks origin at a meaningful datum (base centre, bottom corner, centre of mass, as per project context).
     
-- If the SolidWorks origin is not meaningful (common in messy assemblies), do not attempt to “fix it” in SolidWorks if it risks breaking the design. Fix pivot/origin in Blender or Unreal.
+- If the SolidWorks origin is not meaningful (common in messy assemblies), fix pivot/origin in Blender or Unreal.
     
-
 ### **3.3 Export from SolidWorks**
 
-Preferred option (cleanest to Blender):
+Preferred option:
 
 - Export as STEP AP214/AP242 for maximum CAD detail and plan to re-mesh in Blender.  
     Alternate option:
@@ -155,7 +159,9 @@ Naming:
 
 ---
 
-## **4. Blender Stage (STEP → FBX)**
+## **4. Blender (STEP -> FBX)**
+
+Blender is used as the FBX retains texture information. If not important, see [[UNITY-3D-DESIGN#**4. FreeCAD Stage**]]
 
 ### **4.1 Import**
 
@@ -163,20 +169,20 @@ Naming:
     
 2. Set Units:
     
-    - Scene Properties → Units:
+    - Scene Properties -> Units:
         
-        - **Unit System: Metric**
+        - Unit System: Metric
             
-        - **Length: Millimeters** (or meters if you prefer, but be consistent)
+        - Length: Millimeters (or meters if you prefer, but be consistent)
             
 3. Import:
     
-    - If STEP: use a STEP importer add-on workflow.
+    - Depending on version, you may need a step importer plugin. 
         
 
 ### **4.2 Clean hierarchy**
 
-- Group logically: either keep separate objects for major parts, or join into one object if interactivity is only at “whole assembly” level.
+- Group logically, either keep separate objects for major parts, or join into one object if interactivity is only at “whole assembly” level.
     
 - Rename key objects consistently:
     
@@ -187,19 +193,19 @@ Naming:
     - etc.
         
 
-### **4.3 Fix pivot/origin (critical for VR interaction)**
+### **4.3 Fix pivot/origin (necessary for interaction blueprints)**
 
-The pivot/ centre of rotation is vital during VR interaction.
+The pivot/ centre of rotation is important during VR interaction.
 
 For each object you intend to interact with in Unreal:
 
 1. Select object.
     
-2. Right click → **Set Origin**:
+2. Right click -> Set Origin:
     
-    - Use **Origin to Geometry** for most CAD.
+    - Use Origin to Geometry for most CAD.
         
-    - Use **Origin to Center of Mass** only if you need physical behaviour.
+    - Use Origin to Center of Mass only if you need physical behaviour.
         
 3. If the geometry is far from the world origin:
     
@@ -207,7 +213,7 @@ For each object you intend to interact with in Unreal:
         
     - Then set origin.
         
-    - Then move it back if needed.
+    - Move it back if needed.
         
 
 4. If facing complications in Blender, fix in Unreal
@@ -217,11 +223,11 @@ For each object you intend to interact with in Unreal:
 
 Before export:
 
-- Select object(s) → Ctrl+A:
+- Select object(s) -> Ctrl+A:
     
-    - Apply **Rotation**
+    - Apply Rotations if needed
         
-    - Apply **Scale 1/10**  
+    - Apply Scale 1/10  
         This prevents FBX import from producing weird scale factors or rotations.
         
 
@@ -229,28 +235,28 @@ Before export:
 
 - If triangle count is excessive:
     
-    - Use Decimate modifier carefully, or remesh strategy.
+    - Use Blender Decimate modifier carefully, or remesh strategy.
         
 
 ### **4.6 Export FBX**
 
-1. File → Export → FBX
+1. File -> Export -> FBX
     
 2. Recommended export settings:
     
-    - Selected Objects: **On**
+    - Selected Objects: On
         
-    - Apply Transform: **On**
+    - Apply Transform: On
         
-    - Forward: **-Y Forward**
+    - Forward: -Y Forward
         
-    - Up: **Z Up**
+    - Up: Z Up
         
     - Smoothing: Face
         
-    - Add Leaf Bones: **Off**
+    - Add Leaf Bones: Off
         
-    - Bake Animation: **Off**
+    - Bake Animation: Off
         
 3. Naming:
     
@@ -259,42 +265,47 @@ Before export:
 
 ---
 
-## **5. Unreal Engine Stage (Template Copy + Swap Mesh/Textures)**
+## **5. Unreal Engine**
 
-### **5.1 Project rule: do not edit the canonical template**
+### **5.1 Do not Edit the Template**
 
 The VIS Unreal project has a working baseline with interaction logic and MR settings.  
 You must:
 
-- **Duplicate** template maps and blueprint assets into a new project folder.
+- Duplicate any template features/blueprint assets into a new project.
     
 - Modify only the duplicates.
     
 
 This prevents breakage of the good baseline.
 
-### **5.2 Duplicate the template map**
+### **5.2 Duplicate the Template Project**
 
 1. Locate the working template level (e.g. `This PC/VIS/Unreal Projects/5.4/VIS).
     
 2. Copy and Paste the entire VIS project into `5.4/`
     
-3. Rename the directory and the project (they should match):
+3. Rename BOTH the directory and the project (they should match):
 
     - `VIS.umap`
     to
     - `YourProject.umap`    
-
 
 ### **5.4 The interaction blueprints**
 
  blueprints used by the /contents/VIS/template are within /contents/VIS/Blueprints. They are built upon versions of the sample plugin blueprints:
 
 - Pawn (`BP_HandInteractionPawn`)
+	- This is what the user possesses. It is like a camera that glues to your face.
     
 - Interactable object blueprint base (`BP_Design_Object`)
+	- This is where the functions lie, and how they interact.
+	- Joysticks to move and rotate the mesh
+	- Mesh is grabbable
+	- Grab with two hands to scale the mesh
     
 - Passthrough Enabler (BP_PasshthroughEnabler)
+	- This is needed if you want mixed reality (can still see the room with the headset on).
     
 
 ### **5.5 Import FBX**
@@ -305,11 +316,11 @@ This prevents breakage of the good baseline.
         
 2. In FBX import options:
     
-    - Import Mesh: **On**
+    - Import Mesh: On
         
-    - Import Materials: **Off** (recommended)
+    - Import Materials: Off (recommended)
         
-    - Import Textures: **Off** (recommended)
+    - Import Textures: Off (recommended)
         
     - Combine Meshes: depends on your plan:
         
@@ -332,7 +343,7 @@ You will usually rebuild materials in Unreal:
         
 3. For each mesh:
     
-    - Open Static Mesh → Materials slots → assign your new material(s).
+    - Open Static Mesh -> Materials slots -> assign your new material(s).
         
 
 If you have a full PBR set:
@@ -350,12 +361,10 @@ If you have a full PBR set:
 
 If you only have one diffuse texture (common in scans):
 
-- Use it as Base Color and manually tune roughness/metallic to avoid “black/white mirror” behaviour.
+- Use it as Base Color and manually tune roughness/metallic to avoid black/white reflective behaviour.
     
 
-### **5.7 Swap mesh inside the duplicated blueprint**
-
-This is the core “template reuse” step.
+### **5.7 Swap Mesh Inside the Duplicated Blueprint**
 
 In the duplicated grabbable blueprint (e.g. `BP_Design_Object`):
 
@@ -367,7 +376,7 @@ In the duplicated grabbable blueprint (e.g. `BP_Design_Object`):
     
     - Collision Enabled: Query Only (for traces) or Query+Physics if you need physics
         
-    - Collision Preset: Block the trace channel you use for grabbing (often Visibility or a custom channel)
+    - Collision Preset: Block the trace channel you use for grabbing (default Visibility or a custom channel)
         
 	- For complex meshes, be sure to set all collisions to simple, this makes the interactable bounding box simpler and saves performance.
    
@@ -387,7 +396,7 @@ In the duplicated map or project settings:
 
 Run:
 
-- Play → VR Preview  
+- Play -> VR Preview  
     Verify:
     
 - Headset tracking OK
@@ -403,7 +412,7 @@ Run:
 
 ---
 
-## **6. Validation Checklist (Pass/Fail)**
+## **6. Validation**
 
 ### **Geometry**
 
@@ -425,7 +434,7 @@ Run:
     
 - Release leaves object where released
 
-### **Project integrity**
+### **Integrity**
 
 - Canonical template assets untouched
     
@@ -436,6 +445,9 @@ Run:
 
 ## **7. Common Failures and Fixes**
 
-- **Object moves away when scaling:** pivot/origin wrong. Fix: move the subcomponent in unreal to be closer to the BP_Design_Object's pivot subcomponent. (PivotRoot empty-parent strategy)
+- Object moves away when scaling: pivot/origin wrong. Fix: move the subcomponent in unreal to be closer to the BP_Design_Object's pivot subcomponent. (PivotRoot empty-parent strategy)
     
-- **One-eye shadow/ lighting glitches:** instanced stereo can break per-eye shadow behaviour; use known-good rendering settings baseline.
+- One-eye shadow/ lighting glitches: disable instanced stereo, it breaks per-eye shadows.
+	
+- Review [[TCR-learnings]] for debugging, or email tye.cameron-robson@strath.ac.uk
+

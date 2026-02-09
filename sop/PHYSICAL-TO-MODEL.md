@@ -99,24 +99,24 @@ Physical object → RealityScan capture → Cloud processing → Download model 
     
 2. Create a **new scan project** with a name:
     
-    - `YYMMDD_ObjectName_V01` (example: `260114_GearboxCover_V01`)
+    - YYMMDD_ObjectName_01 (example: `260114_GearboxCover_01`)
         
 3. Verify your phone has enough storage and battery (photogrammetry capture requires many photos).
     
 
-### **3.2 Capture strategy (what actually works)**
+### **3.2 Capture strategy**
 
 You need high overlap between neighbouring views. Target > 60% overlap.
 
-Use a ring-based capture:
+Use a ring-based capture, i.e.:
 
-- **Ring 1 (low angle):** walk around object at low elevation
+- Ring 1 (low angle):walk around object at low elevation
     
-- **Ring 2 (mid angle):** repeat at mid elevation
+- Ring 2 (mid angle): repeat at mid elevation
     
-- **Ring 3 (high angle):** repeat at high elevation looking down
+- Ring 3 (high angle): repeat at high elevation looking down
     
-- **Top coverage:** add top-down passes if the geometry needs it
+- Top coverage: add top-down passes if the geometry needs it
     
 
 Rules:
@@ -125,7 +125,7 @@ Rules:
     
 - Keep the object at similar screen size. Do not zoom.
     
-- Do not “jump” viewpoints. Small steps, consistent overlap.
+- Do not “jump” viewpoints. Very small steps, consistent overlap.
     
 - If auto-capture is enabled, slow down so it can actually sample properly.
     
@@ -138,10 +138,10 @@ RealityScan provides capture feedback. Use it:
 
 - If you see weak coverage on an area, do a local loop around that region.
     
-- If alignment looks unstable, stop and add more overlap, do not “push through” and hope.
+- If alignment looks unstable, stop and add more overlap, there is not much point continuing.
     
 
-### **3.4 Crop before export (important)**
+### **3.4 Crop before export**
 
 After processing, crop the reconstruction to exclude background. Cropping does not alter the original project and improves downstream usability.
 
@@ -162,30 +162,30 @@ After processing, crop the reconstruction to exclude background. Cropping does n
     - Texture smearing
         
 
-If it failed, the fix is almost always: **more overlap**, **less glare**, **more features**, or **a static background**.
+If it failed, the fix is almost always: more overlap, less glare, more features, or a static background.
 
-### **4.2 Export or download format (platform-specific)**
+### **4.2 Export or download format**
 
 RealityScan Mobile download formats:
 
-- **iOS:** downloads in **OBJ** format
+- **iOS:** downloads in OBJ format
     
-- **Android:** downloads in **GLB** format
+- **Android:** downloads in GLB format
     
 
-Also, RealityScan can share to Sketchfab (optional route if you need an easy format download and settings control).
+Unreal prefers GLB, but OBJ is valid too. Also, RealityScan can share to Sketchfab (optional route if you need an easy format download and settings control).
 
 ### **4.3 File management on the workstation**
 
-Create a project folder:
+Don't save files to desktop. It will be beneficial for everyone to create a database of models. Create the project folder:
 
-- `...\VIS\RealityScan\YYMMDD_ObjectName_V01\`
+- `This PC\VIS\RealityScan\YYMMDD_ObjectName_01\`
     
-    - `01_source\` (raw exports)
+    - `source\` (raw exports)
         
-    - `02_working\` (any conversions, cleanup)
+    - `working\` (any conversions, cleanup)
         
-    - `03_unreal\` (UE project imports, screenshots, notes)
+    - `unreal\` (UE project imports, screenshots, notes)
         
 
 Copy exports off the phone immediately. Do not leave “the only copy” on a device.
@@ -196,9 +196,9 @@ Copy exports off the phone immediately. Do not leave “the only copy” on a de
 
 ### **5.1 Preferred import route (GLB / glTF)**
 
-If you have **GLB** (Android export, or you converted to GLB), import via Unreal’s glTF pipeline:
+If you have GLB (Android export), import via Unreal’s glTF pipeline:
 
-1. In Unreal, use **File → Import Into Level** (or import into the Content Browser depending on your workflow).
+1. In Unreal, use File -> Import Into Level (or import into the Content Browser depending on your workflow).
     
 2. Select the `.glb` file and import into:
     
@@ -213,13 +213,13 @@ If you have **GLB** (Android export, or you converted to GLB), import via Unreal
     - Normals are not inverted
         
 
-Unreal has explicit glTF support docs. Use them when something behaves oddly.
+Unreal has explicit glTF support docs.
 
 ### **5.2 iOS OBJ import route (OBJ)**
 
-If you only have **OBJ** (iOS export):
+If you only have OBJ (iOS export):
 
-Option A (fastest, usually fine):
+Option A:
 
 1. Import `.obj` into Unreal as a Static Mesh.
     
@@ -228,20 +228,20 @@ Option A (fastest, usually fine):
 
 Option B (more reliable materials, slightly more work):
 
-1. Convert OBJ → GLB using a DCC tool (clean import and consolidated packaging).
+1. Convert OBJ -> GLB using a DCC tool (clean import and consolidated packaging).
     
 2. Import the GLB using the glTF route above.
     
 
-Pick one. Do not sink time into “tweaking OBJ import settings” when the real problem is missing or mis-referenced textures.
+Pick one. It depends on materials.
 
 ### **5.3 Scale and units sanity check**
 
-Unreal units are **centimetres**.
+Unreal units are centimetres.
 
 Do a physical measurement check:
 
-1. Measure one known dimension on the real item (eg, 120 mm).
+1. Measure one known dimension on the real item.
      
 2. In Unreal, use the Static Mesh bounds or a measuring tool.
     
@@ -249,8 +249,6 @@ Do a physical measurement check:
     
     - `ScaleCorrection = X.XX`
         
-
-Do not “eyeball scale” if this asset will be used in MR or layout work.
 
 ### **5.4 Make it usable: pivot, collision, and placement**
 
@@ -262,44 +260,41 @@ Minimum asset prep:
     
     - Simple collision for interaction and performance
         
-    - Complex-as-simple only if you truly need it (usually you do not)
+    - Complex-as-simple only if you truly need it (complex meshes, saves performance)
         
 
 ---
 
 ## **6. Optimisation for real-time use**
 
-Photogrammetry meshes can be heavy. Treat performance as a requirement, not an afterthought.
-
+Photogrammetry meshes can be heavy.
 ### **6.1 Nanite (desktop and high-end VR workflows)**
 
-If the mesh is high-poly and used as a Static Mesh, enable Nanite where appropriate.
-
-Reality check:
+If the mesh is high-poly and used as a Static Mesh, enable Nanite where appropriate:
 
 - Nanite helps with polycount, not with bad textures or bad captures.
     
 - For some VR constraints, you may still want simplified meshes and classic LODs.
     
 
-### **6.2 LODs (if you need distance scaling)**
+### **6.2 LODs**
 
 Generate LODs if the object will be seen at multiple distances or used repeatedly.
 
 RealityScan (desktop tooling) supports LOD export concepts; Unreal also supports LOD generation internally.
 
-### **6.3 Texture discipline**
+### **6.3 Textures**
 
 - Prefer 2K textures for most interactive scenes unless this is a hero asset.
     
 - If you see massive texture memory spikes, reduce texture size and re-test.
     
-- Photogrammetry textures often include baked lighting. In Unreal, this can look wrong under new lighting. Decide whether that is acceptable for your use case.
+- Photogrammetry textures often include lighting. In Unreal, this can look wrong under lighting conditions. Decide whether that is acceptable for your use case, you can adjust the brightness of textures.
     
 
 ---
 
-## **7. Packaging in Unreal (standard asset structure)**
+## **7. Packaging in Unreal
 
 Create folders:
 
@@ -318,18 +313,18 @@ Create folders:
 
 Create:
 
-1. A cleaned **Static Mesh** asset
+1. A cleaned Static Mesh asset
     
-2. A **Material Instance** (so you can tweak roughness, tint, AO without rewriting graphs)
+2. A Material Instance (so you can tweak roughness, tint, AO if needed)
     
-3. A simple **Blueprint Actor** if you need consistent placement, scale lock, or interaction hooks
+3. A simple Blueprint Actor if you need repeatable placement, scale, or interaction
     
 
 ---
 
-## **8. Quality checklist (pass or rework)**
+## **8. Quality**
 
-Reject the asset if any of the following are true:
+Photogrammetry can cause the following:
 
 - The silhouette is wrong (warping, melted geometry)
     
@@ -346,7 +341,7 @@ Reject the asset if any of the following are true:
 
 Common root causes:
 
-- Not enough overlap (>60% is the baseline)
+- Not enough overlap (>60%)
     
 - Reflective surfaces and moving shadows
     
@@ -357,12 +352,12 @@ Common root causes:
 
 ---
 
-## **9. Summary and good practice**
+## **9. Summary**
 
-- RealityScan is only “fast” when you obey capture discipline: static scene, diffuse light, high overlap, feature-rich surfaces.
+- RealityScan is fast when you capture properly: static scene, light, high overlap, feature-rich surfaces.
     
 - Export formats differ by platform: iOS OBJ, Android GLB. Plan your Unreal import route accordingly.
     
-- In Unreal, make the asset usable: correct scale, sensible pivot, collision, and an organised content structure.
+- In Unreal, make the asset usable: correct scale, sensible pivot [[UNREAL-3D-DESIGN#**4.3 Fix pivot/origin (critical for VR interaction)**]], collision, and an organised content structure.
     
-- Optimise deliberately: Nanite where it helps, LODs where they matter, textures kept under control.
+- Optimise: Nanite where it helps, LODs for visual problems, textures minimal where possible.

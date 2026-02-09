@@ -20,9 +20,9 @@ RC545a Visualisation & Interaction Suite (VIS)
 
 ---
 
-## **0. Setup (device, space, and constraints)**
+## **0. Setup**
 
-RealityScan is photogrammetry. With some setup, you get a 3D model generated using a mobile phone.
+RealityScan uses photogrammetry. With some setup, you get a 3D model generated using a mobile phone.
 
 ### **0.1 Tools**
 
@@ -32,10 +32,10 @@ RealityScan is photogrammetry. With some setup, you get a 3D model generated usi
     
 - **Unreal Engine 5.x**
     
-- Matte white/ grey backdrop (plain cloth/card), soft lights
+- Matte white/ grey backdrop, soft lights, no reflections
     
 
-### **0.2 Object suitability (do this before you start)**
+### **0.2 Object suitability**
 
 RealityScan struggles with:
 
@@ -59,20 +59,20 @@ RealityScan requires the object and background to remain static during capture.
 
 ### **0.3 Environment and lighting rules**
 
-- Use consistent lighting. Avoid harsh shadows and specular highlights.
+- Use consistent lighting. Avoid harsh shadows.
     
-- Avoid direct sunlight changes during capture.
+- Avoid direct sunlight that changes during capture.
     
 - Put the object on a plain, non-reflective background with strong contrast to the object.
     
-- Keep the background static, no people walking behind you.
+- Keep the background and environment static.
     
 
 ---
 
 ## **1. Purpose**
 
-Define a repeatable pipeline for capturing a physical item and producing a textured 3D asset suitable for Unreal Engine use (visualisation, VR/MR scenes, design showcases).
+A repeatable pipeline for capturing a physical item and producing a textured 3D asset suitable for Unreal Engine use (visualisation, VR/MR scenes, design showcases).
 
 Primary use cases:
 
@@ -87,11 +87,11 @@ Primary use cases:
 
 ## **2. Standard pipeline overview**
 
-`Physical object → RealityScan capture → Cloud processing → Download model → Unreal import → Asset cleanup + optimisation → Packaged UE asset`
+Physical object → RealityScan capture → Cloud processing → Download model → Unreal import → Asset cleanup + optimisation → Packaged UE asset
 
 ---
 
-## **3. RealityScan capture stage (mobile)**
+## **3. RealityScan capture**
 
 ### **3.1 Create a new project**
 

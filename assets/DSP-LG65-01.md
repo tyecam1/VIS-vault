@@ -9,7 +9,6 @@ device_name: LG 65 inch TV
 serial: 207MAXS1Y834
 status: available
 location: Wall or stand in RC545a
-kit:
 power: AC 100–240 V, 50–60 Hz, 2.7 A, 270 W
 connectivity: HDMI (others TBC)
 accessories: []

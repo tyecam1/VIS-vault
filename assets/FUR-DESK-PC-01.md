@@ -9,7 +9,6 @@ device_name: Workstation desk
 serial: unknown
 status: available
 location: RC545a room
-kit:
 power:
 connectivity:
 accessories: []

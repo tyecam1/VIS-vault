@@ -9,7 +9,6 @@ device_name: Vive Focus Vision
 serial: FA5B63R00054
 status: available
 location: Cupboard Shelf A
-kit:
 power: Internal battery, USB-C charging (exact spec TBC)
 connectivity: WiFi, USB-C, possibly DisplayPort via link cable (TBC)
 accessories:

@@ -1,12 +1,12 @@
 Installed:
 - SteamVR
 - ViveHub
-- Unity
+- Unity (2022 LTS)
 - Blender
 - SOLIDWORKS (No longer since changed PC)
 - Oculus/ Meta quest link
 - FreeCAD
-- Unreal
+- Unreal (5.4 for passthrough)
 - OBS Studio
 
 Pending/ potential:

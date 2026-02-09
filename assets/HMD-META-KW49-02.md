@@ -9,7 +9,6 @@ device_name: Meta Quest (exact generation TBC)
 serial: 1MVRV4B10B2146
 status: available
 location: Cupboard Shelf A
-kit: A
 power: Internal battery, USB-C charging
 connectivity: WiFi, USB-C (PC link)
 accessories:

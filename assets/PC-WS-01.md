@@ -9,7 +9,6 @@ device_name: RC545a VIS workstation PC
 serial: DMEM-308-Z1-VR
 status: needs_info
 location: On PC desk in RC545a
-kit:
 power: Standard ATX power supply (exact rating TBC)
 connectivity: "Ports TBC: record HDMI, DisplayPort, USB, network"
 accessories:

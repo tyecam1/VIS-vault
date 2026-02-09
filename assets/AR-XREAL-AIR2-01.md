@@ -9,7 +9,6 @@ device_name: XREAL Air 2 Ultra
 serial: F4X64B214861GM
 status: available
 location: Cupboard Shelf A
-kit: C
 power: 5 V, 1 A input from host device
 connectivity: USB-C (video and power, via supporting devices)
 accessories:

@@ -9,7 +9,6 @@ device_name: XREAL Beam Pro (128 GB WiFi)
 serial: unknown
 status: available
 location: Cupboard Shelf A
-kit: C
 power: 4300 mAh battery, 16.641 Wh, 11 V, 3.3 A
 connectivity: WiFi, USB-C
 accessories:

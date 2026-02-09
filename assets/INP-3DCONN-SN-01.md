@@ -9,7 +9,6 @@ device_name: 3Dconnexion SpaceNavigator
 serial: unknown
 status: available
 location: Cupboard Shelf C
-kit: D
 power: 5 V, 60 mA over USB
 connectivity: USB
 accessories:

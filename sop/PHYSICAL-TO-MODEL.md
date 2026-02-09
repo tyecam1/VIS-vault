@@ -20,9 +20,9 @@ RC545a Visualisation & Interaction Suite (VIS)
 
 ---
 
-## **0. Pre-flight setup (device, space, and constraints)**
+## **0. Setup (device, space, and constraints)**
 
-RealityScan is photogrammetry. With some setup, you get a 3D model generated using your mobile phone.
+RealityScan is photogrammetry. With some setup, you get a 3D model generated using a mobile phone.
 
 ### **0.1 Tools**
 

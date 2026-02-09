@@ -3,7 +3,6 @@ sop_id: SOP-VIVE-3D-DESIGN-01
 asset_group: rc545a-vis
 type: vis_sop
 name: Vive 3D design visualisation pipeline
-relates_to_kit: "[[KIT-VIVE-MOCAP-01]]"
 purpose: A repeatable pipeline to take SolidWorks assemblies into Unreal for mixed reality visualisation on Vive headsets.
 intended_users:
   - Designers conducting CAD design reviews

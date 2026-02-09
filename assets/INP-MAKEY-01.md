@@ -5,11 +5,9 @@ category: input_device
 subtype: tangible_interface
 manufacturer: JoyLabz
 model: Makey Makey
-device_name: Makey Makey kit
 serial: unknown
 status: available
 location: Cupboard Shelf C
-kit: D
 power: USB from host computer
 connectivity: USB
 accessories:

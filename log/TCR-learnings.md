@@ -1,5 +1,4 @@
-
-# Unity Configuration
+# Unity 2022 Configuration
 
 1. The HTC Vive package was installed incorrectly. Fixing requires far longer than setting it up from the beginning, correctly.
 2. XR conflicts with a lot of build in rendering in unity. Built in RP (not URP) is a good baseline.
@@ -130,7 +129,7 @@ Template
 	2. Probably easiest to remap or ignore custom materials in unity when importing.
 38. Shaders are down to personal preference, as long as they render.
 
-# Unreal Configuration
+# Unreal 5.4 Configuration
 
 1. Unreal was prioritised to collaborate with the farm project in DMEM, and for comparison with Unity usefulness
     2. work resulted in a reusable lab template and SOP     

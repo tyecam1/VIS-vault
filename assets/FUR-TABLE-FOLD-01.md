@@ -9,7 +9,6 @@ device_name: Foldable table
 serial: unknown
 status: available
 location: RC545a room
-kit:
 power:
 connectivity:
 accessories: []

@@ -8,7 +8,7 @@ model: X4000
 device_name: XREAL Beam Pro (128 GB WiFi)
 serial: unknown
 status: available
-location: Cupboard Shelf A
+location: Cupboard Shelf C
 power: 4300 mAh battery, 16.641 Wh, 11 V, 3.3 A
 connectivity: WiFi, USB-C
 accessories:

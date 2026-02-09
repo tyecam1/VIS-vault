@@ -8,7 +8,7 @@ model: Leap Motion Controller 2
 device_name: Leap Motion Controller 2
 serial: LE510000200000D870
 status: available
-location: Cupboard Shelf B
+location: Cupboard Shelf C
 power: USB 3 power from host device
 connectivity: USB 3 Type C
 accessories:

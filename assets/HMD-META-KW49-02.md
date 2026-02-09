@@ -7,8 +7,8 @@ manufacturer: Meta
 model: KW49CM
 device_name: Meta Quest (exact generation TBC)
 serial: 1MVRV4B10B2146
-status: available
-location: Cupboard Shelf A
+status: unavailable
+location: unknown
 power: Internal battery, USB-C charging
 connectivity: WiFi, USB-C (PC link)
 accessories:

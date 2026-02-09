@@ -8,7 +8,7 @@ model: GL-S1300
 device_name: GL.iNet AC1200 wireless router
 serial: 25800P205122
 status: available
-location: Cupboard Shelf D
+location: RC545a room
 power: 12 V DC, 2 A
 connectivity: Ethernet, WiFi
 accessories: []

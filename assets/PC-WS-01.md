@@ -6,7 +6,7 @@ subtype: workstation
 manufacturer: unknown
 model: unknown
 device_name: RC545a VIS workstation PC
-serial: DMEM-308-Z1-VR
+serial: DMEM-RC545-TCR
 status: needs_info
 location: On PC desk in RC545a
 power: Standard ATX power supply (exact rating TBC)

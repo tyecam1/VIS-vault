@@ -8,7 +8,7 @@ model: Index
 device_name: Valve Index
 serial: TBC
 status: available
-location: Cupboard Shelf A
+location: Cupboard Shelf B
 power: External PSU via link box
 connectivity: DisplayPort, USB, external power (link box), SteamVR base stations
 accessories:

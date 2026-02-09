@@ -8,7 +8,7 @@ model: Vive Tracker 3.0
 device_name: Vive Tracker 3.0
 serial: unknown
 status: needs_info
-location: Cupboard Shelf B
+location: Cupboard Shelf A
 power: Internal battery, charged via USB (exact rating TBC)
 connectivity: 2.4 GHz wireless to SteamVR base system (TBC)
 accessories:
